@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +14,21 @@
                 extend: {
                     colors: {
                         'velo-darkblue': '#0A1D3A', // Azul escuro para fundo principal e títulos
-                        'velo-orange': '#FF7F00',   // Laranja para destaque e CTAs
+                        'velo-orange': '#FF7F00',   // Laranja original, para destaque e CTAs
+                        'velo-red-accent': '#EF4444', // Um vermelho/laranja mais intenso do raio
+                        'velo-blue-light': '#3B82F6', // Azul claro/cyan da asa
+                        'velo-purple-dark': '#6366F1', // Roxo/índigo da base do "V"
                         'velo-lightgrey': '#F0F2F5', // Cinza claro para fundos secundários e cards
                         'velo-text-dark': '#1F2937', // Texto escuro padrão
-                        'velo-text-light': '#E0E7FF', // Texto claro para fundos escuros
+                        'velo-text-light': '#F8FAFC', // Texto claro para fundos escuros
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'], // Uma fonte moderna e limpa
-                    }
+                    },
+                    // Definição de gradientes para usar nas classes bg-gradient-to-... from-... to-...
+                    // Não é estritamente necessário definir aqui se usar os nomes das cores diretamente,
+                    // mas pode ser útil para gradientes mais complexos ou reutilizáveis.
+                    // Ex: bg-gradient-to-r from-velo-blue-light to-velo-purple-dark
                 }
             }
         }
@@ -29,7 +36,7 @@
     <!-- Link para a fonte Inter do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
     <!-- Favicon -->
@@ -38,7 +45,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Velo Delivery: Plataforma SaaS completa para adegas e distribuidores de bebidas. Leve sua loja online 24h, otimizada para SEO Local, AEO e marketing com IA.">
-    <meta name="keywords" content="Velo Delivery, SaaS, adega, distribuidor de bebidas, loja online, e-commerce, SEO Local, AEO, marketing IA, gestão de estoque, catálogo digital">
+    <meta name="keywords" content="Velo Delivery, SaaS, adega, distribuidor de bebidas, loja online, e-commerce, SEO Local, AEO, marketing IA, gestão de estoque, catálogo digital, delivery de bebidas">
     <meta name="author" content="Velo Delivery">
 
     <!-- Open Graph Meta Tags (para redes sociais) -->
@@ -96,83 +103,150 @@
 </head>
 <body class="font-sans text-velo-text-dark antialiased bg-white">
 
-    <!-- Header / Banner Superior -->
-    <header class="bg-velo-darkblue text-velo-text-light py-10 md:py-16">
-        <div class="container mx-auto px-4 max-w-7xl flex flex-col items-center text-center">
-            <!-- Certifique-se de ter um arquivo 'logo-retangular.png' na raiz do seu repositório -->
-            <img src="logo-retangular.png" alt="Velo Delivery Logo" class="h-16 md:h-24 mb-6">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-                Sua Adega 24h no Ar
-            </h1>
-            <p class="text-lg md:text-xl mb-8 max-w-3xl">
-                Leve sua loja online com a Velo Delivery: a plataforma SaaS completa para adegas e distribuidores de bebidas.
-                Gestão simplificada, visibilidade garantida.
-            </p>
-            <a href="https://wa.me/554832200260?text=Olá, gostaria de saber mais sobre a Velo Delivery!" target="_blank" class="bg-velo-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
-                Fale Conosco no WhatsApp
-            </a>
+    <!-- Header / Banner Superior - Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-r from-velo-blue-light to-velo-purple-dark text-velo-text-light py-16 md:py-24">
+        <!-- Opcional: Adicionar formas abstratas ou padrões de fundo para mais dinamismo -->
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg class="h-full w-full" fill="none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path fill="currentColor" d="M0 0h100v100H0z" opacity=".2"/>
+                <path fill="currentColor" d="M0 0h100v100H0z" opacity=".1" transform="rotate(45) translate(-50 0)"/>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 max-w-7xl flex flex-col lg:flex-row items-center text-center lg:text-left relative z-10">
+            <div class="lg:w-1/2 mb-10 lg:mb-0">
+                <!-- Certifique-se de ter um arquivo 'logo-retangular.png' na raiz do seu repositório -->
+                <img src="logo-retangular.png" alt="Velo Delivery Logo" class="h-20 md:h-28 mx-auto lg:mx-0 mb-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4 text-velo-text-light">
+                    Sua Adega 24h <span class="text-velo-orange">no Ar!</span>
+                </h1>
+                <p class="text-lg md:text-xl lg:text-2xl mb-8 max-w-3xl lg:max-w-none mx-auto text-velo-text-light opacity-90">
+                    A plataforma SaaS completa que digitaliza e impulsiona sua distribuidora de bebidas.
+                    <br class="hidden md:inline">Gestão eficiente, visibilidade máxima e vendas crescentes.
+                </p>
+                <a href="https://wa.me/554832200260?text=Olá, gostaria de saber mais sobre a Velo Delivery!" target="_blank" class="inline-flex items-center justify-center bg-velo-orange hover:bg-velo-red-accent text-white font-extrabold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-xl">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zM8 8h8v2H8V8z"></path></svg>
+                    Comece Agora!
+                </a>
+            </div>
+            <div class="lg:w-1/2 flex justify-center lg:justify-end mt-10 lg:mt-0">
+                <!-- Placeholder para uma ilustração ou mockup do produto -->
+                <!-- Poderia ser uma imagem de um celular com a interface da Velo -->
+                <img src="https://via.placeholder.com/500x350/FF7F00/FFFFFF?text=Interface+Velo+Delivery" alt="Mockup da interface Velo Delivery" class="w-full max-w-md rounded-lg shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out">
+            </div>
         </div>
     </header>
 
     <!-- Vantagens Section -->
     <section class="py-16 md:py-24 bg-velo-lightgrey">
         <div class="container mx-auto px-4 max-w-7xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-velo-darkblue">Por que escolher a Velo Delivery?</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 text-velo-darkblue">Por que a Velo Delivery é a escolha <span class="text-velo-orange">inteligente</span>?</h2>
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1: Estoque Real -->
-                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
-                    <div class="text-velo-orange text-5xl mb-4">💡</div> <!-- Ícone placeholder -->
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">Estoque Real Integrado</h3>
-                    <p class="text-gray-700">Nunca mais venda o que não tem! Sincronize seu estoque físico com o online em tempo real. Gestão eficiente para sua adega.</p>
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center border-b-8 border-velo-orange transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ease-in-out flex flex-col items-center">
+                    <div class="text-velo-orange text-6xl mb-6">
+                        <!-- Heroicon: Cube -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-velo-darkblue">Estoque Real Integrado</h3>
+                    <p class="text-gray-700 text-lg">Acabe com o "sem estoque"! Venda apenas o que tem, com sincronização automática do seu inventário físico e online. Precisão que gera confiança.</p>
                 </div>
                 <!-- Card 2: SEO Local (GEO) -->
-                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
-                    <div class="text-velo-orange text-5xl mb-4">📍</div> <!-- Ícone placeholder -->
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">SEO Local (GEO)</h3>
-                    <p class="text-gray-700">Seja encontrado pelos clientes mais próximos! Sua loja aparecerá em destaque nas buscas locais do Google e outras plataformas.</p>
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center border-b-8 border-velo-blue-light transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ease-in-out flex flex-col items-center">
+                    <div class="text-velo-blue-light text-6xl mb-6">
+                        <!-- Heroicon: Location Marker -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-velo-darkblue">Visibilidade Local Máxima</h3>
+                    <p class="text-gray-700 text-lg">Sua adega no topo das buscas regionais! Otimizamos sua presença para que clientes próximos encontrem e comprem de você, aumentando seu alcance local.</p>
                 </div>
                 <!-- Card 3: Otimização para IAs (AEO) -->
-                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
-                    <div class="text-velo-orange text-5xl mb-4">🤖</div> <!-- Ícone placeholder -->
-                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">Otimização para IAs (AEO)</h3>
-                    <p class="text-gray-700">Prepare-se para o futuro! Sua loja otimizada para ser encontrada por assistentes de voz e inteligências artificiais.</p>
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center border-b-8 border-velo-purple-dark transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ease-in-out flex flex-col items-center">
+                    <div class="text-velo-purple-dark text-6xl mb-6">
+                        <!-- Heroicon: Sparkles (for AI/future) -->
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-velo-darkblue">Pronto para o Futuro com IA</h3>
+                    <p class="text-gray-700 text-lg">Sua loja otimizada para a nova era! Garanta que assistentes de voz e inteligências artificiais direcionem clientes para sua adega. Seja pioneiro!</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Call to Action Mid-page -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-velo-orange to-velo-red-accent text-velo-text-light text-center">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Não perca mais vendas!</h2>
+            <p class="text-lg md:text-xl opacity-90 mb-10">Conheça nossos planos e comece a transformar sua adega hoje mesmo.</p>
+            <a href="#planos" class="inline-flex items-center justify-center bg-velo-darkblue hover:bg-opacity-90 text-white font-bold py-4 px-10 rounded-full text-xl md:text-2xl transition duration-300 ease-in-out transform hover:scale-105 shadow-xl">
+                Ver Planos
+                <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </section>
+
     <!-- Planos Simples Section -->
-    <section class="py-16 md:py-24 bg-white">
+    <section id="planos" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-4 max-w-7xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-velo-darkblue">Nossos Planos Simples</h2>
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 text-velo-darkblue">Escolha o Plano Ideal para Sua Adega</h2>
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                 <!-- Plano Iniciante -->
-                <div class="bg-velo-lightgrey rounded-lg shadow-xl p-8 flex flex-col h-full border-b-4 border-blue-600">
-                    <h3 class="text-2xl md:text-3xl font-bold text-velo-darkblue mb-4">Plano Iniciante</h3>
-                    <p class="text-gray-600 mb-6">Ideal para começar e digitalizar suas vendas.</p>
-                    <ul class="text-gray-700 list-disc list-inside mb-8 flex-grow">
-                        <li class="mb-2">Catálogo de Produtos Online</li>
-                        <li class="mb-2">Vendas Diretas pelo WhatsApp</li>
-                        <li class="mb-2">Painel de Controle Básico</li>
-                        <li>Suporte Essencial</li>
+                <div class="bg-velo-lightgrey rounded-xl shadow-xl p-8 flex flex-col h-full border-b-8 border-velo-blue-light transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ease-in-out">
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-velo-darkblue mb-4">Plano Iniciante</h3>
+                    <p class="text-gray-700 text-lg mb-6">Perfeito para quem quer digitalizar e começar a vender online rapidamente.</p>
+                    <ul class="text-gray-800 text-lg space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-blue-light mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Catálogo de Produtos Online Ilimitado
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-blue-light mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Vendas Diretas e Descomplicadas via WhatsApp
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-blue-light mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Painel de Controle Intuitivo
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-blue-light mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Suporte ao Cliente Essencial
+                        </li>
                     </ul>
-                    <button onclick="openWhatsAppForm('Iniciante')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    <button onclick="openWhatsAppForm('Iniciante')" class="w-full bg-velo-blue-light hover:bg-velo-purple-dark text-white font-bold py-4 px-6 rounded-full text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
                         Contratar Plano Iniciante
                     </button>
                 </div>
 
                 <!-- Plano Profissional -->
-                <div class="bg-velo-darkblue text-velo-text-light rounded-lg shadow-xl p-8 flex flex-col h-full border-b-4 border-velo-orange">
-                    <h3 class="text-2xl md:text-3xl font-bold text-velo-orange mb-4">Plano Profissional</h3>
-                    <p class="text-velo-lightgrey mb-6">Solução completa para escalar seu negócio com tecnologia.</p>
-                    <ul class="list-disc list-inside mb-8 flex-grow">
-                        <li class="mb-2">Tudo do Plano Iniciante +</li>
-                        <li class="mb-2">Gestão de Estoque Avançada</li>
-                        <li class="mb-2">Marketing com Inteligência Artificial</li>
-                        <li class="mb-2">Relatórios Detalhados</li>
-                        <li>Suporte Prioritário</li>
+                <div class="relative bg-gradient-to-br from-velo-blue-light to-velo-purple-dark text-velo-text-light rounded-xl shadow-xl p-8 flex flex-col h-full border-b-8 border-velo-orange transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ease-in-out">
+                    <div class="absolute -top-4 -right-4 bg-velo-orange text-white text-sm font-bold px-4 py-2 rounded-full rotate-6 shadow-lg">
+                        MAIS POPULAR!
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-velo-orange mb-4">Plano Profissional</h3>
+                    <p class="text-velo-lightgrey text-lg mb-6">A solução completa para escalar seu negócio com tecnologia de ponta.</p>
+                    <ul class="text-velo-text-light text-lg space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-orange mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Todos os recursos do Plano Iniciante +
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-orange mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Gestão de Estoque Avançada e Sincronizada
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-orange mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Marketing com Inteligência Artificial para Promoções
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-orange mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Relatórios Detalhados de Vendas e Performance
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-velo-orange mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Suporte Prioritário e Consultoria Estratégica
+                        </li>
                     </ul>
-                    <button onclick="openWhatsAppForm('Profissional')" class="w-full bg-velo-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    <button onclick="openWhatsAppForm('Profissional')" class="w-full bg-velo-orange hover:bg-velo-red-accent text-white font-extrabold py-4 px-6 rounded-full text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
                         Contratar Plano Profissional
                     </button>
                 </div>
@@ -183,10 +257,10 @@
     <!-- Rodapé -->
     <footer class="bg-velo-darkblue text-velo-text-light py-10">
         <div class="container mx-auto px-4 max-w-7xl text-center md:flex md:justify-between md:items-center">
-            <p class="mb-4 md:mb-0">&copy; 2023 Velo Delivery. Todos os direitos reservados.</p>
-            <nav class="space-x-4">
+            <p class="mb-4 md:mb-0 text-sm md:text-base">&copy; 2023 Velo Delivery. Todos os direitos reservados.</p>
+            <nav class="space-x-4 text-sm md:text-base">
                 <a href="#top" class="hover:text-velo-orange transition duration-300">Início</a>
-                <a href="#" class="hover:text-velo-orange transition duration-300">Privacidade</a>
+                <a href="#" class="hover:text-velo-orange transition duration-300">Política de Privacidade</a>
                 <a href="#" class="hover:text-velo-orange transition duration-300">Termos de Uso</a>
             </nav>
         </div>
@@ -195,20 +269,20 @@
     <!-- JavaScript para o formulário/WhatsApp -->
     <script>
         function openWhatsAppForm(planName) {
-            const userName = prompt("Por favor, digite seu nome:");
-            if (!userName) {
-                alert("Nome é obrigatório para continuar.");
+            const userName = prompt("Para prosseguirmos, por favor, digite seu nome:");
+            if (!userName || userName.trim() === '') {
+                alert("Nome é obrigatório para continuar. Por favor, tente novamente.");
                 return;
             }
 
-            const storeName = prompt("Por favor, digite o nome da sua loja:");
-            if (!storeName) {
-                alert("Nome da loja é obrigatório para continuar.");
+            const storeName = prompt("Agora, digite o nome da sua loja/adega:");
+            if (!storeName || storeName.trim() === '') {
+                alert("Nome da loja é obrigatório para continuar. Por favor, tente novamente.");
                 return;
             }
 
             // Constrói a mensagem para o WhatsApp
-            const whatsappMessage = `Olá, quero contratar o plano ${planName} para a loja ${storeName}. Meu nome é ${userName}.`;
+            const whatsappMessage = `Olá, meu nome é ${userName} e quero contratar o plano ${planName} para a loja ${storeName}. Poderiam me ajudar com os próximos passos?`;
             const whatsappUrl = `https://wa.me/554832200260?text=${encodeURIComponent(whatsappMessage)}`;
 
             // Abre o link do WhatsApp em uma nova aba
