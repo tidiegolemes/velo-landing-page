@@ -1,1 +1,220 @@
-index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velo Delivery - Sua Adega 24h no Ar</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração personalizada do Tailwind para cores e fontes
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'velo-darkblue': '#0A1D3A', // Azul escuro para fundo principal e títulos
+                        'velo-orange': '#FF7F00',   // Laranja para destaque e CTAs
+                        'velo-lightgrey': '#F0F2F5', // Cinza claro para fundos secundários e cards
+                        'velo-text-dark': '#1F2937', // Texto escuro padrão
+                        'velo-text-light': '#E0E7FF', // Texto claro para fundos escuros
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Uma fonte moderna e limpa
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Link para a fonte Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <!-- Favicon -->
+    <!-- Certifique-se de ter um arquivo 'favicon.ico' na raiz do seu repositório -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Velo Delivery: Plataforma SaaS completa para adegas e distribuidores de bebidas. Leve sua loja online 24h, otimizada para SEO Local, AEO e marketing com IA.">
+    <meta name="keywords" content="Velo Delivery, SaaS, adega, distribuidor de bebidas, loja online, e-commerce, SEO Local, AEO, marketing IA, gestão de estoque, catálogo digital">
+    <meta name="author" content="Velo Delivery">
+
+    <!-- Open Graph Meta Tags (para redes sociais) -->
+    <meta property="og:title" content="Velo Delivery - Sua Adega 24h no Ar">
+    <meta property="og:description" content="Plataforma SaaS para adegas e distribuidores de bebidas com gestão de estoque, SEO local, AEO e marketing com IA.">
+    <meta property="og:type" content="website">
+    <!-- ATENÇÃO: Substitua 'seuusuarionogithub' e o caminho pelas URLs reais do seu GitHub Pages e imagens -->
+    <meta property="og:url" content="https://seuusuarionogithub.github.io/velo-landing-page/">
+    <meta property="og:image" content="https://seuusuarionogithub.github.io/velo-landing-page/og-image.png"> <!-- Crie uma imagem de bom impacto (1200x630px) -->
+    <meta property="og:site_name" content="Velo Delivery">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card Meta Tags (para Twitter) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@VeloDelivery"> <!-- Se houver um handle no Twitter -->
+    <meta name="twitter:creator" content="@VeloDelivery">
+    <meta name="twitter:title" content="Velo Delivery - Sua Adega 24h no Ar">
+    <meta name="twitter:description" content="Plataforma SaaS para adegas e distribuidores de bebidas com gestão de estoque, SEO local, AEO e marketing com IA.">
+    <meta name="twitter:image" content="https://seuusuarionogithub.github.io/velo-landing-page/og-image.png">
+
+    <!-- JSON-LD Schema (para SEO avançado com Google) - SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Velo Delivery",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "120"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "BRL",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "valueAddedTaxIncluded": true
+        },
+        "description": "Planos flexíveis para adegas de todos os tamanhos, com opções de catálogo, gestão de estoque e marketing com IA."
+      },
+      "description": "Velo Delivery: Sua adega 24h no ar. Plataforma SaaS completa para adegas e distribuidores de bebidas com gestão de estoque, SEO local (GEO), Otimização para IAs (AEO) e marketing avançado com IA.",
+      <!-- ATENÇÃO: Substitua 'seuusuarionogithub' e o caminho pelas URLs reais do seu GitHub Pages e imagens -->
+      "url": "https://seuusuarionogithub.github.io/velo-landing-page/",
+      "screenshot": "https://seuusuarionogithub.github.io/velo-landing-page/screenshot.png", <!-- Uma imagem de screenshot da sua plataforma -->
+      "softwareRequirements": "Navegador web moderno",
+      "image": "https://seuusuarionogithub.github.io/velo-landing-page/logo-retangular.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Velo Delivery"
+      }
+    }
+    </script>
+</head>
+<body class="font-sans text-velo-text-dark antialiased bg-white">
+
+    <!-- Header / Banner Superior -->
+    <header class="bg-velo-darkblue text-velo-text-light py-10 md:py-16">
+        <div class="container mx-auto px-4 max-w-7xl flex flex-col items-center text-center">
+            <!-- Certifique-se de ter um arquivo 'logo-retangular.png' na raiz do seu repositório -->
+            <img src="logo-retangular.png" alt="Velo Delivery Logo" class="h-16 md:h-24 mb-6">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                Sua Adega 24h no Ar
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl">
+                Leve sua loja online com a Velo Delivery: a plataforma SaaS completa para adegas e distribuidores de bebidas.
+                Gestão simplificada, visibilidade garantida.
+            </p>
+            <a href="https://wa.me/554832200260?text=Olá, gostaria de saber mais sobre a Velo Delivery!" target="_blank" class="bg-velo-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg md:text-xl transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                Fale Conosco no WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Vantagens Section -->
+    <section class="py-16 md:py-24 bg-velo-lightgrey">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-velo-darkblue">Por que escolher a Velo Delivery?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Estoque Real -->
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="text-velo-orange text-5xl mb-4">💡</div> <!-- Ícone placeholder -->
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">Estoque Real Integrado</h3>
+                    <p class="text-gray-700">Nunca mais venda o que não tem! Sincronize seu estoque físico com o online em tempo real. Gestão eficiente para sua adega.</p>
+                </div>
+                <!-- Card 2: SEO Local (GEO) -->
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="text-velo-orange text-5xl mb-4">📍</div> <!-- Ícone placeholder -->
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">SEO Local (GEO)</h3>
+                    <p class="text-gray-700">Seja encontrado pelos clientes mais próximos! Sua loja aparecerá em destaque nas buscas locais do Google e outras plataformas.</p>
+                </div>
+                <!-- Card 3: Otimização para IAs (AEO) -->
+                <div class="bg-white rounded-lg shadow-xl p-8 text-center border-b-4 border-velo-orange transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="text-velo-orange text-5xl mb-4">🤖</div> <!-- Ícone placeholder -->
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-velo-darkblue">Otimização para IAs (AEO)</h3>
+                    <p class="text-gray-700">Prepare-se para o futuro! Sua loja otimizada para ser encontrada por assistentes de voz e inteligências artificiais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos Simples Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-velo-darkblue">Nossos Planos Simples</h2>
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+                <!-- Plano Iniciante -->
+                <div class="bg-velo-lightgrey rounded-lg shadow-xl p-8 flex flex-col h-full border-b-4 border-blue-600">
+                    <h3 class="text-2xl md:text-3xl font-bold text-velo-darkblue mb-4">Plano Iniciante</h3>
+                    <p class="text-gray-600 mb-6">Ideal para começar e digitalizar suas vendas.</p>
+                    <ul class="text-gray-700 list-disc list-inside mb-8 flex-grow">
+                        <li class="mb-2">Catálogo de Produtos Online</li>
+                        <li class="mb-2">Vendas Diretas pelo WhatsApp</li>
+                        <li class="mb-2">Painel de Controle Básico</li>
+                        <li>Suporte Essencial</li>
+                    </ul>
+                    <button onclick="openWhatsAppForm('Iniciante')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        Contratar Plano Iniciante
+                    </button>
+                </div>
+
+                <!-- Plano Profissional -->
+                <div class="bg-velo-darkblue text-velo-text-light rounded-lg shadow-xl p-8 flex flex-col h-full border-b-4 border-velo-orange">
+                    <h3 class="text-2xl md:text-3xl font-bold text-velo-orange mb-4">Plano Profissional</h3>
+                    <p class="text-velo-lightgrey mb-6">Solução completa para escalar seu negócio com tecnologia.</p>
+                    <ul class="list-disc list-inside mb-8 flex-grow">
+                        <li class="mb-2">Tudo do Plano Iniciante +</li>
+                        <li class="mb-2">Gestão de Estoque Avançada</li>
+                        <li class="mb-2">Marketing com Inteligência Artificial</li>
+                        <li class="mb-2">Relatórios Detalhados</li>
+                        <li>Suporte Prioritário</li>
+                    </ul>
+                    <button onclick="openWhatsAppForm('Profissional')" class="w-full bg-velo-orange hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        Contratar Plano Profissional
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-velo-darkblue text-velo-text-light py-10">
+        <div class="container mx-auto px-4 max-w-7xl text-center md:flex md:justify-between md:items-center">
+            <p class="mb-4 md:mb-0">&copy; 2023 Velo Delivery. Todos os direitos reservados.</p>
+            <nav class="space-x-4">
+                <a href="#top" class="hover:text-velo-orange transition duration-300">Início</a>
+                <a href="#" class="hover:text-velo-orange transition duration-300">Privacidade</a>
+                <a href="#" class="hover:text-velo-orange transition duration-300">Termos de Uso</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- JavaScript para o formulário/WhatsApp -->
+    <script>
+        function openWhatsAppForm(planName) {
+            const userName = prompt("Por favor, digite seu nome:");
+            if (!userName) {
+                alert("Nome é obrigatório para continuar.");
+                return;
+            }
+
+            const storeName = prompt("Por favor, digite o nome da sua loja:");
+            if (!storeName) {
+                alert("Nome da loja é obrigatório para continuar.");
+                return;
+            }
+
+            // Constrói a mensagem para o WhatsApp
+            const whatsappMessage = `Olá, quero contratar o plano ${planName} para a loja ${storeName}. Meu nome é ${userName}.`;
+            const whatsappUrl = `https://wa.me/554832200260?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Abre o link do WhatsApp em uma nova aba
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
