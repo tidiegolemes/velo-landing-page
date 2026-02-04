@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Indica o caminho do sitemap para facilitar a descoberta
+Sitemap: https://velodelivery.com.br/sitemap.xml
