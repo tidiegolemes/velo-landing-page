@@ -160,7 +160,7 @@
 
             <div class="text-center mb-6">
                 <h3 class="text-2xl font-black text-velo-darkblue italic uppercase">Configurar sua Loja</h3>
-                <p class="text-gray-500 text-sm mt-2">Você será redirecionado para o painel de teste.</p>
+                <p class="text-gray-500 text-sm mt-2">Preencha para liberar seu acesso grátis.</p>
             </div>
 
             <form id="leadForm" onsubmit="handleLeadSubmit(event)">
@@ -170,11 +170,16 @@
                     <label class="block text-gray-500 text-[10px] font-black uppercase mb-1 ml-2 tracking-widest">Seu Nome</label>
                     <input type="text" id="userName" class="bg-slate-50 border border-gray-200 rounded-xl w-full py-4 px-5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-velo-orange font-bold" placeholder="Ex: Diego" required>
                 </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-500 text-[10px] font-black uppercase mb-1 ml-2 tracking-widest">Seu WhatsApp</label>
+                    <input type="tel" id="userPhone" class="bg-slate-50 border border-gray-200 rounded-xl w-full py-4 px-5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-velo-orange font-bold" placeholder="(DDD) 99999-9999" required>
+                </div>
                 
                 <div class="mb-6">
                     <label class="block text-gray-500 text-[10px] font-black uppercase mb-1 ml-2 tracking-widest">Nome da Sua Loja</label>
                     <input type="text" id="storeName" class="bg-slate-50 border border-gray-200 rounded-xl w-full py-4 px-5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-velo-orange font-bold" placeholder="Ex: Adega do Zé" required>
-                    <p class="text-xs text-gray-400 mt-2 ml-2">Isso criará seu link exclusivo de acesso.</p>
+                    <p class="text-xs text-gray-400 mt-2 ml-2">Isso criará seu link exclusivo.</p>
                 </div>
 
                 <button type="submit" class="w-full bg-velo-orange hover:bg-orange-600 text-white font-black py-4 rounded-xl text-lg transition shadow-xl uppercase tracking-widest transform active:scale-95">
@@ -216,28 +221,29 @@
             e.preventDefault();
             
             const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
             btn.innerText = "Criando Ambiente...";
             btn.disabled = true;
 
             const user = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value; // PEGA O WHATSAPP
             const store = document.getElementById('storeName').value;
 
-            // 1. Criar Slug (Ex: "Adega do Zé" -> "adega-do-ze")
+            // 1. Criar Slug Limpo
             let slug = store.toLowerCase()
                 .replace(/[àáâãäå]/g,"a").replace(/[èéêë]/g,"e").replace(/[ìíîï]/g,"i").replace(/[òóôõö]/g,"o").replace(/[ùúûü]/g,"u").replace(/[ç]/g,"c")
                 .replace(/[^a-z0-9]/g, '-');
             
-            // 2. Adicionar ID único para evitar conflito (teste)
+            // 2. ID Único
             const randomId = Math.floor(Math.random() * 1000);
             const finalStoreId = `${slug}-${randomId}`;
 
-            // 3. (Opcional) Aqui você poderia salvar o Lead no Firebase ou enviar pro Zap antes
-            console.log(`Novo Lead: ${user}, Loja: ${store}, ID: ${finalStoreId}`);
+            // 3. LIMPA O TELEFONE (Só números)
+            const cleanPhone = phone.replace(/\D/g, '');
 
-            // 4. Redirecionar para o App
+            // 4. Redireciona passando o ZAP na URL também!
             setTimeout(() => {
-                window.location.href = `${BASE_APP_URL}?store=${finalStoreId}`;
+                // Monta a URL: .../admin?store=loja-teste&phone=551199999
+                window.location.href = `${BASE_APP_URL}?store=${finalStoreId}&phone=${cleanPhone}`;
             }, 1000);
         }
     </script>
